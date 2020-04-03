@@ -3,11 +3,11 @@
 #### Day01
 在丁香网爬虫疫情数据，并绘制地图。  
 以下是截止至2020年3月31日的全国疫情饼图示例  
-<div align=center>![image](https://github.com/IDayday/AI-Studio-7days-CV_for_epidemic/blob/master/sample/%E7%96%AB%E6%83%85%E9%A5%BC%E5%9B%BE%E7%A4%BA%E4%BE%8B.png)
+<div align=center><img src="https://github.com/IDayday/AI-Studio-7days-CV_for_epidemic/blob/master/sample/%E7%96%AB%E6%83%85%E9%A5%BC%E5%9B%BE%E7%A4%BA%E4%BE%8B.png"/></div> 
 #### Day02
-利用DNN网络识别手势（数字）  
+利用DNN网络识别手势（数字）    
 手势图片示例（PS：不知道为什么，看着有点喜感）  
-<div align=center><img width="150" height="150" src="https://github.com/IDayday/AI-Studio-7days-CV_for_epidemic/blob/master/Day02/%E6%89%8B%E5%8A%BF.jpg"/></div> 
+<div align=center><img width="150" height="150" src="https://github.com/IDayday/AI-Studio-7days-CV_for_epidemic/blob/master/Day02/%E6%89%8B%E5%8A%BF.jpg"/></div>   
 课程上给的示例网络是全连接的线性网络，我尝试了一次，效果奇差（avg_acc只有0.12），学习群里有小伙伴各种努力，也只提升到0.5。果断改用CNN完成作业。初次尝试avg_acc就能达到0.93，稍微调整了下学习率（AdamOpt(lr=0.001）)、训练轮次、FC层节点个数，最终结果达到0.96。
 #### Day03
 利用CNN网络识别车牌  
