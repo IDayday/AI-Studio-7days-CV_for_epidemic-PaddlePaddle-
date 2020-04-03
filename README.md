@@ -3,7 +3,7 @@
 #### Day01
 在丁香网爬虫疫情数据，并绘制地图。  
 以下是截止至2020年3月31日的全国疫情饼图示例  
-![image](https://github.com/IDayday/AI-Studio-7days-CV_for_epidemic/blob/master/sample/%E7%96%AB%E6%83%85%E9%A5%BC%E5%9B%BE%E7%A4%BA%E4%BE%8B.png)
+<div align=center>![image](https://github.com/IDayday/AI-Studio-7days-CV_for_epidemic/blob/master/sample/%E7%96%AB%E6%83%85%E9%A5%BC%E5%9B%BE%E7%A4%BA%E4%BE%8B.png)
 #### Day02
 利用DNN网络识别手势（数字）  
 手势图片示例（PS：不知道为什么，看着有点喜感）  
