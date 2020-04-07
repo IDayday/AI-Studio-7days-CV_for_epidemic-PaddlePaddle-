@@ -70,15 +70,20 @@ PS：注意CPU或GPU版本，请根据系统进行选择。若选择GPU版本，
 PaddleSlim模型压缩及部署（服务于嵌入式设备以及低端芯片）    
 模型压缩原理部分在PaddleSlim官方文档中有介绍。[[link](https://paddlepaddle.github.io/PaddleSlim/algo/algo.html)]  
 主要分为四个板块：量化、卷积核剪枝、蒸馏、NAS  
-<div align=center><img src="https://github.com/IDayday/AI-Studio-7days-CV_for_epidemic-PaddlePaddle-/blob/master/sample/PaddleSlim.jpg"/></div>   
+<div align=center><img src="https://github.com/IDayday/AI-Studio-7days-CV_for_epidemic-PaddlePaddle-/blob/master/sample/PaddleSlim.jpg"/></div>  
+
 - 重点介绍卷积通道裁剪:
   ```
   定义：裁剪掉不重要的冗余的卷积参数
   目的：减少参数量，加快推理速度
   ```
+
 首先评估参数的重要性的两种方法：1.敏感度评估卷积层整体的重要性。2.L1_norm评估卷积层内通道的重要性。  
+
 方法1：基于在测试集上的敏感度确定每个卷积层剪裁比例。  
+
 <div align=center><img src="https://github.com/IDayday/AI-Studio-7days-CV_for_epidemic-PaddlePaddle-/blob/master/sample/%E6%95%8F%E6%84%9F%E5%BA%A6%E5%88%86%E6%9E%90.jpg"/></div>  
+
 方法2：单个卷积内，按通道的L1_norm进行排序。  
 裁剪结果一般是：FLOPs大量下降，精度略有浮动，速度显著提升。  
 
