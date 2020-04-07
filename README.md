@@ -67,6 +67,7 @@ PS：注意CPU或GPU版本，请根据系统进行选择。若选择GPU版本，
   ```
 最强大的还是迁移学习的能力。
 ### Day06
-PaddleSlim模型压缩及部署（服务于嵌入式设备以及低端芯片）  
+PaddleSlim模型压缩及部署（服务于嵌入式设备以及低端芯片）    
 模型压缩原理部分在PaddleSlim官方文档中有介绍。[[link](https://paddlepaddle.github.io/PaddleSlim/algo/algo.html)]  
-主要分为四个板块：量化、卷积核剪枝、蒸馏、NAS
+主要分为四个板块：量化、卷积核剪枝、蒸馏、NAS  
+<div align=center><img src="https://github.com/IDayday/AI-Studio-7days-CV_for_epidemic-PaddlePaddle-/blob/master/sample/PaddleSlim.jpg"/></div>   
