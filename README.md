@@ -27,7 +27,7 @@ PaddlePaddle本地安装教程可直接查阅[[官网](https://www.paddlepaddle.
           paddle.fluid.install_check.run_check()
   出现：Your Paddle Fluid is installed succesfully!说明安装成功
   ```
-PS：注意CPU或GPU版本，请根据系统进行选择。若选择GPU版本，还应配合对应版本CUDA以及CUDnn安装。  
+PS：注意CPU或GPU版本，请根据系统进行选择。若选择GPU版本，还应配合对应版本CUDA以及cuDNN安装。  
 
 在丁香网爬虫疫情数据，并绘制地图。  
 使用pyecharts绘制疫情分布图，Pycharts api可参考[[link](https://pyecharts.org/#/zh-cn/)]。Day01/ipynb文件中有demo可供参考。  
