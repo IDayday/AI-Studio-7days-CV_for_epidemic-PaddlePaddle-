@@ -119,11 +119,12 @@ class VGG(fluid.dygraph.Layer):
         y = self.predict(x)
         return y
 ```
+
 ### Day03
 利用CNN网络识别车牌  
 <div align=center><img src="https://github.com/IDayday/AI-Studio-7days-CV_for_epidemic/blob/master/Day03/%E8%BD%A6%E7%89%8C.png"/></div>  
 将上次写的CNN结构改了改，这里输入的尺寸是 128x1x20x20（二值化了原始图片） ，因为图片被处理为单通道（黑白），且进行了分割。所以CNN网络的输入大小也要随之改变。因为输入尺寸里图片大小只有20x20，所以网络没有设计更多层数，pooling也减少（也可以去掉pooling）。最后准确率为0.99。Day03/ipynb内有详细的网络搭建demo。(提示：网络是定义在动态图上，类似于pytorch的网络设计）  
-- 简单修改之前定义的网络结构：(注释里有详细的维度变换)
+- 简单修改之前定义的网络结构：(注释里有详细的维度变换)    
 ```
 #定义VGGNET网络
 class VGGNET(fluid.dygraph.Layer):
@@ -139,7 +140,6 @@ class VGGNET(fluid.dygraph.Layer):
         self.linear1 = Linear(input_dim=512, output_dim=256, act='relu')# 128*2*2
         self.drop_ratio = 0.5
         self.predict = Linear(input_dim=256, output_dim=65, act='softmax')
-
 # 网络的前向计算过程
     def forward(self, input):
         x = self.conv1(input)
@@ -153,12 +153,12 @@ class VGGNET(fluid.dygraph.Layer):
         x = fluid.layers.dropout(x, self.drop_ratio)
         y = self.predict(x)
         return y
-```
-- 在训练中可以设置自动更新学习速率：
+```  
+- 在训练中可以设置自动更新学习速率：  
 ```
 auto_rate = paddle.fluid.layers.piecewise_decay([100,200],[0.001,0.0005,0.0001])
 opt=fluid.optimizer.AdamOptimizer(learning_rate=auto_rate, parameter_list=model.parameters())
-```
+```  
 
 ### Day04
 利用VGG-16识别人脸口罩  
