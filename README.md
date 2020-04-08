@@ -124,7 +124,8 @@ class VGG(fluid.dygraph.Layer):
 利用CNN网络识别车牌  
 <div align=center><img src="https://github.com/IDayday/AI-Studio-7days-CV_for_epidemic/blob/master/Day03/%E8%BD%A6%E7%89%8C.png"/></div>  
 将上次写的CNN结构改了改，这里输入的尺寸是 128x1x20x20（二值化了原始图片） ，因为图片被处理为单通道（黑白），且进行了分割。所以CNN网络的输入大小也要随之改变。因为输入尺寸里图片大小只有20x20，所以网络没有设计更多层数，pooling也减少（也可以去掉pooling）。最后准确率为0.99。Day03/ipynb内有详细的网络搭建demo。(提示：网络是定义在动态图上，类似于pytorch的网络设计）  
-- 简单修改之前定义的网络结构：(注释里有详细的维度变换)    
+
+- 简单修改之前定义的网络结构(注释里有详细的维度变换):   
 ```
 #定义VGGNET网络
 class VGGNET(fluid.dygraph.Layer):
@@ -136,7 +137,6 @@ class VGGNET(fluid.dygraph.Layer):
         self.conv3 = Conv2D(32, 64, 3,act='relu')# 128 64 6 6
         self.conv4 = Conv2D(64, 128, 3, act='relu')# 128 128 4 4
         self.pool2 = Pool2D(pool_size=2,pool_type='max',pool_stride=2)# 128 128 2 2
-
         self.linear1 = Linear(input_dim=512, output_dim=256, act='relu')# 128*2*2
         self.drop_ratio = 0.5
         self.predict = Linear(input_dim=256, output_dim=65, act='softmax')
