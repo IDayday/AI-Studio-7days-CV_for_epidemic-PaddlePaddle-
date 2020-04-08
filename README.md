@@ -227,4 +227,26 @@ PaddleSlim模型压缩及部署（服务于嵌入式设备以及低端芯片）
 方法2：单个卷积内，按通道的L1_norm进行排序。  
 裁剪结果一般是：FLOPs大量下降，精度略有浮动，速度显著提升。  
 
-  
+为了尝试paddleslim压缩效果，教程是以MNIST数据集上测试(不过CPU跑得太慢了)
+- 直接导入MobileNetV1分类模型
+```
+# paddleslim.models下预定义了用于构建分类模型的方法
+use_gpu = fluid.is_compiled_with_cuda()
+exe, train_program, val_program, inputs, outputs = slim.models.image_classification("MobileNet", [1, 28, 28], 10, use_gpu=use_gpu)
+place = fluid.CUDAPlace(0) if fluid.is_compiled_with_cuda() else fluid.CPUPlace()
+```
+- 训练一个epoch后结果如下：
+```
+final test result top1=0.970653057098, top5=0.999098539352
+```
+- 定义量化方法：
+```
+place = exe.place
+quant_program =  slim.quant.quant_aware(train_program, exe.place, for_test=False)   
+val_quant_program =  slim.quant.quant_aware(val_program, exe.place, for_test=True)   
+```
+- 继续训练，量化后结果如下：
+```
+final test result top1=0.97966748476, top5=0.999499201775
+```
+精度不降反升，也证实了量化是模型压缩的有效方法之一，同时PaddleSlim的量化效果不错。
